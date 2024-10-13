@@ -1,4 +1,3 @@
-import Peer from 'peerjs';
 import { RTCPeerConnection, RTCSessionDescription, RTCIceCandidate } from 'react-native-webrtc';
 import { sendSignalingMessage } from './websocketService';
 
@@ -10,16 +9,12 @@ export type CustomPeer = {
 let peerConnection: RTCPeerConnection | null = null;
 
 export async function discoverPeers(): Promise<CustomPeer[]> {
-  // Hier implementieren Sie die Peer-Discovery-Logik
-  // Beispiel:
-  return [
-    { id: '1', name: 'Peer 1' },
-    { id: '2', name: 'Peer 2' },
-  ];
+  // Implementieren Sie hier die Peer-Discovery-Logik
+  return [];
 }
 
 export async function sendFile(peerId: string): Promise<void> {
-  // Hier implementieren Sie die Dateiübertragungslogik
+  // Implementieren Sie hier die Dateiübertragungslogik
   console.log(`Sending file to peer ${peerId}`);
 }
 
@@ -45,7 +40,7 @@ export async function createOffer() {
   if (!peerConnection) {
     peerConnection = setupPeerConnection();
   }
-  const offer = await peerConnection.createOffer();
+  const offer = await peerConnection.createOffer({});
   await peerConnection.setLocalDescription(offer);
   return offer;
 }
@@ -55,7 +50,7 @@ export async function handleOffer(offer: RTCSessionDescription) {
     peerConnection = setupPeerConnection();
   }
   await peerConnection.setRemoteDescription(new RTCSessionDescription(offer));
-  const answer = await peerConnection.createAnswer();
+  const answer = await peerConnection.createAnswer();  // Leeres Optionsobjekt hinzugefügt
   await peerConnection.setLocalDescription(answer);
   return answer;
 }
