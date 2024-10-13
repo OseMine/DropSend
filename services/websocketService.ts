@@ -1,4 +1,8 @@
 import { w3cwebsocket as W3CWebSocket } from 'websocket';
+import { handleOffer, handleAnswer, handleIceCandidate } from './networkService';
+
+// Implementieren Sie den Rest des WebSocket-Services wie zuvor
+
 
 let socket: W3CWebSocket | null = null;
 
