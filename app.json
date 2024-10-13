@@ -50,13 +50,13 @@
       [
         "expo-network",
         {
-          "networkPermission": "Allows the app to access network information."
+          "networkPermission": "Allow $(PRODUCT_NAME) to access your local Network."
         }
       ]
     ],
     "extra": {
       "eas": {
-        "projectId": "your-project-id-here"
+        "projectId": "de.osemine.dropsend"
       }
     }
   }
